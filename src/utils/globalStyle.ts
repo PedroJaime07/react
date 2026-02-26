@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { cores } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -49,7 +50,7 @@ table {
 
 
 export const Title = styled.h1`
-    color: #f7f001;
+    color: ${cores.secundaria};
     font-weight: 800;
     letter-spacing: 2px;
     font-size: 40px;

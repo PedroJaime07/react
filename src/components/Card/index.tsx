@@ -1,12 +1,16 @@
-import type { PersonagensProps } from "../../types/personagens.type";
-import { CardStyled } from "./style";
+import type { AnimeProps } from "../../types/anime.type";
 
-export const Card = ({ nome, poder, status }: PersonagensProps) => {
+import { CardGenero, CardStyled, CardTemporadas } from "./style";
+
+export const Card = ({ anime }: any) => {
+  const {id, nome, url_image, genero, quantidade_de_temporadas} = anime
   return (
     <CardStyled>
-      <h2>Nome: {nome}</h2>
-      <p>Poder: {poder}</p>
-      <p>Status: {status ? status : "Desconhecido"}</p>
+      <span>{id}</span>
+      <h2>{nome}</h2>
+      <img src={url_image} alt={`Poster do Anime ${nome}`} />
+      <CardGenero>Genero: {genero}</CardGenero>
+      <CardTemporadas>Temporadas: {quantidade_de_temporadas}</CardTemporadas>
     </CardStyled>
   );
 };
