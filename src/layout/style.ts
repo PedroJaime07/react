@@ -28,3 +28,12 @@ export const HeaderStyled = styled.header`
     }
 `
 
+export const MainStyled = styled.header`
+    min-height: 90vh;
+`
+export const FooterStyled = styled.footer`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${cores.primaria};
+`

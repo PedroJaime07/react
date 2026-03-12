@@ -29,7 +29,7 @@ export const CardStyled = styled.div`
         position: absolute;
         top: 3px;
         left: 3px;
-        font-size: ${tamanhos.fonte.medio};
+        font-size: ${tamanhos.fonte.media};
         color: ${cores.primaria};
     }
 `
@@ -46,4 +46,14 @@ export const CardTemporadas = styled.p`
     font-weight: 400;
     color: ${cores.primaria};
     align-self: flex-end;
+`
+
+export const CotainerBotoes = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 `

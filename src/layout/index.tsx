@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { HeaderStyled } from "./style";
+import { FooterStyled, HeaderStyled, MainStyled } from "./style";
 
 export const Layout = () => {
   return (
@@ -18,13 +18,13 @@ export const Layout = () => {
         </nav>
       </HeaderStyled>
 
-      <main>
+      <MainStyled>
         <Outlet />
-      </main>
+      </MainStyled>
 
-      <footer>
+      <FooterStyled>
         <p>Animes Legal - Todos os direitos reservados</p>
-      </footer>
+      </FooterStyled>
     </>
   );
 };

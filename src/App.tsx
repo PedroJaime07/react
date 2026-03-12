@@ -4,6 +4,7 @@ import { Cadastro } from "./pages/Cadastro";
 import { Page404 } from "./pages/Page404";
 import { GlobalStyle } from "./utils/globalStyle";
 import { Layout } from "./layout";
+import { Editar } from "./pages/Editar";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route index element={<Inicio />} />
           <Route path="cadastro" element={<Cadastro />} />
+          <Route path="editar/:id" element={<Editar />} />
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
