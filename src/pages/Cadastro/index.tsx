@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Title } from "../../utils/globalStyle";
 import { FormStyled } from "./style";
-import axios from "axios";
+import { useAnimes } from "../../hooks/useAnimes";
 
 export const Cadastro = () => {
+  const { criarAnimes } = useAnimes();
   const [nome, setNome] = useState<string>("");
   const [url_image, setUrlImg] = useState<string>("");
   const [genero, setGenero] = useState<string>("");
@@ -12,20 +13,14 @@ export const Cadastro = () => {
 
   const enviarDados = async (e: React.SubmitEvent) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "https://abel-animes.onrender.com/animes",
-        {
-          nome,
-          url_image,
-          genero,
-          quantidade_de_temporadas,
-        },
-      );
-      console.log("Anime Cadastrado com sucesso", data)
-    } catch (err) {
-      console.log("Erro ao enviar",err);
-    }
+    const novo_anime = {
+      nome,
+      url_image,
+      genero,
+      quantidade_de_temporadas,
+    };
+
+    criarAnimes(novo_anime);
   };
 
   return (

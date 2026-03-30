@@ -3,5 +3,5 @@ export interface AnimeProps {
   nome: string;
   url_image: string;
   genero: string;
-  quantidade_de_temporadas: number;
+  quantidade_de_temporadas: number | string;
 }

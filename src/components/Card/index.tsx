@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import {
   CardGenero,
   CardStyled,
@@ -7,21 +5,12 @@ import {
   CotainerBotoes,
 } from "./style";
 import { useNavigate } from "react-router-dom";
+import { useAnimes } from "../../hooks/useAnimes";
 
 export const Card = ({ anime }: any) => {
   const { id, nome, url_image, genero, quantidade_de_temporadas } = anime;
-  const navigate = useNavigate()
-  
-  const excluirAnime = async () => {
-    try {
-      const { data } = await axios.delete(
-        `https://abel-animes.onrender.com/animes/${id}`,
-      );
-      console.log("Anime excluido com sucesso", data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { deletarAnime } = useAnimes();
+  const navigate = useNavigate();
 
   return (
     <CardStyled>
@@ -32,7 +21,7 @@ export const Card = ({ anime }: any) => {
       <CardTemporadas>Temporadas: {quantidade_de_temporadas}</CardTemporadas>
       <CotainerBotoes>
         <button onClick={() => navigate(`/editar/${id}`)}>Editar</button>
-        <button onClick={excluirAnime}>Excluir</button>
+        <button onClick={() => deletarAnime(id)}>Excluir</button>
       </CotainerBotoes>
     </CardStyled>
   );

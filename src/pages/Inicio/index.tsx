@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react";
-import type { AnimeProps } from "../../types/anime.type";
-import axios from "axios";
-import {  Title } from "../../utils/globalStyle";
+import { useEffect } from "react";
+import { Title } from "../../utils/globalStyle";
 import { Container } from "./style";
 import { Card } from "../../components/Card";
-
+import { useAnimes } from "../../hooks/useAnimes";
 
 export const Inicio = () => {
-  const [animes, setAnimes] = useState<AnimeProps[]>();
-
-  const buscarAnimes = async () => {
-    try {
-      const { data } = await axios.get(
-        "https://abel-animes.onrender.com/animes",
-      );
-      setAnimes(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { buscarAnimes, animes, loading } = useAnimes();
 
   useEffect(() => {
     buscarAnimes();
@@ -27,11 +14,14 @@ export const Inicio = () => {
   return (
     <>
       <Title>Lista de Animes</Title>
-      
-      <Container>
-        {animes &&
-          animes.map((element) => <Card key={element.id} anime={element} />)}
-      </Container>
+      {loading ? (
+        <p>Carregando</p>
+      ) : (
+        <Container>
+          {animes &&
+            animes.map((element) => <Card key={element.id} anime={element} />)}
+        </Container>
+      )}
     </>
   );
 };
